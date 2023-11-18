@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
+import { API } from "../../config/API";
 const ProductListWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -17,11 +18,11 @@ const ProductList = () => {
     const [products,setProducts] = useState([]);
     useEffect(()=>{
         const getProducts = async () => {
-            const response = await fetch('https://localhost:7004/api/products');
-            console.log(response);
+            //HTTP GET Method to get all products
+            const response = await fetch(API + '/products');
             if(response.ok){
                 const data = await response.json();
-                setProducts(data);
+                setProducts({...data,ingredientsList:data.ingredients});
             }
         }
         getProducts();   
