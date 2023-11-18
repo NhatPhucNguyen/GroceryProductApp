@@ -1,15 +1,17 @@
-import styled from 'styled-components';
-import ProductForm from '../components/ProductForm';
-const Container = styled.div`
-    
-`
+import styled from "styled-components";
+import ProductForm from "../components/ProductForm";
+import Navbar from "../components/Navbar";
+const Container = styled.div``;
 
 const ProductCreate = () => {
-  return (
-    <Container>
-        <ProductForm />
-    </Container>
-  )
-}
+    return (
+        <>
+            <Navbar />
+            <Container>
+                <ProductForm />
+            </Container>
+        </>
+    );
+};
 
-export default ProductCreate
+export default ProductCreate;
