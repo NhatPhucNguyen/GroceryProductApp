@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { API } from "../../config/API";
 import { useNavigate } from "react-router-dom";
@@ -81,6 +81,11 @@ const AddButton = styled(ToggleButton)`
 `;
 const ProductForm = (props) => {
     const navigate = useNavigate();
+    const [categories,setCategories] = useState([{
+        categoryId:1,
+        name:"",
+        description:""
+    }]);
     const [nutrition, setNutrition] = useState({
         nutritionName: "",
         nutritionQuantity: 0,
@@ -104,6 +109,23 @@ const ProductForm = (props) => {
                   ingredientsList: [],
               }
     );
+    
+    useEffect(()=>{
+        //HTTP GET Method to get all categories
+        const getCategories = async () => {
+            const response = await fetch(API + "/categories/");
+            if(response.ok){
+                const data = await response.json();
+                setCategories(data);
+                console.log(data);
+            }
+            else{
+                console.log(response);
+            }
+        }
+        void getCategories();
+    },[]);
+
     const handleOnchange = (e) => {
         if (e.target.name == "ingredientsList") {
             let ingredients = e.target.value.split(",");
@@ -189,7 +211,9 @@ const ProductForm = (props) => {
                     value={product.categoryId}
                     onChange={handleOnchange}
                 >
-                    <Option value={1}>Fresh Produce</Option>
+                    {categories.map((category)=>{
+                        return <Option value={category.categoryId} key={category.categoryId}>{category.name}</Option>
+                    })}
                 </Select>
                 <Input
                     type="text"
@@ -200,7 +224,7 @@ const ProductForm = (props) => {
                 />
                 <Input
                     type="number"
-                    placeholder="Price"
+                    placeholder="Price (CAD)"
                     name="price"
                     value={product.price > 0 ? product.price : ""}
                     onChange={handleOnchange}

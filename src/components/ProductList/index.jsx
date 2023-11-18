@@ -22,18 +22,18 @@ const ProductList = () => {
             const response = await fetch(API + '/products');
             if(response.ok){
                 const data = await response.json();
-                setProducts({...data,ingredientsList:data.ingredients});
+                setProducts(data);
             }
         }
         getProducts();   
     },[])
     return (
         <CenteredWrapper>
-            <ProductListWrapper>
+            {products.length > 0 && <ProductListWrapper>
                 {products.map((product) => (
                     <ProductCard key={product.upc} product={product} />
                 ))}
-            </ProductListWrapper>
+            </ProductListWrapper>}
         </CenteredWrapper>
     );
 };
