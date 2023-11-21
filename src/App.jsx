@@ -2,11 +2,13 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Home from "./pages/Home";
 import ProductCreate from "./pages/ProductCreate";
 import ProductUpdate from "./pages/ProductUpdate";
+import ProductDetail from "./pages/ProductDetail";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <>
     <Route path="/" element={<Home />}/>
     <Route path="/products/add" element={<ProductCreate/>}/>
+    <Route path="/products/:upc" element={<ProductDetail/>}/>
     <Route path="/products/:upc/update" element={<ProductUpdate/>}/>
   </>
 ))

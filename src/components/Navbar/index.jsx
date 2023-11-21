@@ -80,9 +80,9 @@ const Navbar = () => {
             <Nav>
                 <NavLink to="/">
                     <img
-                        src="../../images/logo.png"
+                        src="/food.png"
                         alt="logo"
-                        style={{ width: "100px", height: "auto" }}
+                        style={{ width: "70px", height: "auto" }}
                     />
                 </NavLink>
                 <Bars />

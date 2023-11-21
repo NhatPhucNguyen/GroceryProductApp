@@ -117,7 +117,6 @@ const ProductForm = (props) => {
             if(response.ok){
                 const data = await response.json();
                 setCategories(data);
-                console.log(data);
             }
             else{
                 console.log(response);

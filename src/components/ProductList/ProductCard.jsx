@@ -35,7 +35,7 @@ const Price = styled.p`
 const ProductCard = ({ product }) => {
   return (
     <Card>
-      <Link to={`/product/${product.id}`}>
+      <Link to={`/products/${product.upc}`}>
         <Title>{product.name}</Title>
       </Link>
       <Description>{product.description}</Description>
