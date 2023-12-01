@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { API } from "../../config/API";
 import { useNavigate } from "react-router-dom";
+import { APIKey } from "../../config/API";
 
 const Container = styled.div`
     width: 100%;
     padding: 2rem;
-    background-color: #dfd6c1;
 `;
 const Form = styled.form`
     padding: 1rem 4rem;
@@ -113,7 +113,11 @@ const ProductForm = (props) => {
     useEffect(()=>{
         //HTTP GET Method to get all categories
         const getCategories = async () => {
-            const response = await fetch(API + "/categories/");
+            const response = await fetch(API + "/categories/",{
+                headers:{
+                    "apikey":APIKey
+                }
+            });
             if(response.ok){
                 const data = await response.json();
                 setCategories(data);
@@ -150,6 +154,7 @@ const ProductForm = (props) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json-patch+json",
+                    "apikey":APIKey
                 },
             });
             if (response.status == 201) {
@@ -167,6 +172,7 @@ const ProductForm = (props) => {
                 body: JSON.stringify(product),
                 headers: {
                     "Content-Type": "application/json-patch+json",
+                    "apikey":APIKey
                 },
             });
             if (response.status == 200) {
@@ -175,6 +181,8 @@ const ProductForm = (props) => {
                 console.log(response);
             }
         };
+
+        //invoke method
         if (props.product) {
             void updateProduct();
         } else {
