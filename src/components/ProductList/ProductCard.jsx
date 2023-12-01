@@ -7,7 +7,6 @@ const Card = styled.div`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
   width: 200px;
   background-color: #fff;
   transition: transform 0.3s;
@@ -18,14 +17,15 @@ const Card = styled.div`
   }
 `;
 
+const Image = styled.img`
+  width: 100%; 
+  height: 150px;
+  object-fit: contain; 
+`;
+
 const Title = styled.h3`
   margin: 10px 0;
   color: #333;
-`;
-
-const Description = styled.p`
-  color: #666;
-  margin-bottom: 10px;
 `;
 
 const Price = styled.p`
@@ -34,11 +34,11 @@ const Price = styled.p`
 
 const ProductCard = ({ product }) => {
   return (
-    <Card>
+    <Card>      
       <Link to={`/products/${product.upc}`}>
+        <Image src={product.imageUrl} alt={product.name} />
         <Title>{product.name}</Title>
       </Link>
-      <Description>{product.description}</Description>
       <Price>${product.price}</Price>
     </Card>
   );

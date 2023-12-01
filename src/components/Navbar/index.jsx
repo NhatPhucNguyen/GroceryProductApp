@@ -57,22 +57,22 @@ const NavMenu = styled.div`
 //         display: none;
 //     }
 // `;
-const NavBtnLink = styled(Link)`
-    border-radius: 4px;
-    background: #256ce1;
-    padding: 10px 22px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
+// const NavBtnLink = styled(Link)`
+//     border-radius: 4px;
+//     background: #256ce1;
+//     padding: 10px 22px;
+//     color: #fff;
+//     border: none;
+//     cursor: pointer;
+//     transition: all 0.2s ease-in-out;
+//     text-decoration: none;
 
-    &:hover {
-        transition: all 0.2s ease-in-out;
-        background: #fff;
-        color: #010606;
-    }
-`;
+//     &:hover {
+//         transition: all 0.2s ease-in-out;
+//         background: #fff;
+//         color: #010606;
+//     }
+// `;
 
 const Navbar = () => {
     return (
@@ -87,19 +87,19 @@ const Navbar = () => {
                 </NavLink>
                 <Bars />
                 <NavMenu>
+                    <NavLink to="/categories" >
+                        Categories
+                    </NavLink>                    
                     <NavLink to="/about" >
                         About
                     </NavLink>
-                    <NavLink to="/products" >
-                        Products
-                    </NavLink>
-                    <NavLink to="/contact-us" >
+                    {/* <NavLink to="/contact-us" >
                         Contact Us
-                    </NavLink>
-                    <NavLink to="/sign-up">
+                    </NavLink> */}
+                    {/* <NavLink to="/sign-up">
                         Sign Up
-                    </NavLink>
-                    <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                    </NavLink> */}
+                    {/* <NavBtnLink to="/signin">Sign In</NavBtnLink> */}
                 </NavMenu>
                 {/*<NavBtn>
                     <NavBtnLink to="/signin">Sign In</NavBtnLink>
